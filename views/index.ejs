@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory List</title>
+</head>
+<body>
+  <h1>Inventory</h1>
+  <a href="/add">Add Product</a>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+    <% products.forEach(p => { %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.quantity %></td>
+        <td><%= p.price %></td>
+        <td>
+          <a href="/edit/<%= p._id %>">Edit</a>
+          <form action="/delete/<%= p._id %>?_method=DELETE" method="POST" style="display:inline">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>
